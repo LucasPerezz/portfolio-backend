@@ -1,12 +1,15 @@
-import express from 'express';
-import projectsManager from '../manager/projects.manager';
+const express = require('express');
+const ProjectsManager = require('../managers/projectsManager');
+
+
+
 
 const projectRouter = express.Router();
-
+const manager = new ProjectsManager();
 
 projectRouter.get('/', async (_req, res, next) => {
     try {
-        res.send(await projectsManager.GET_allProjects());
+        res.send(await manager.GET_allProjects());
     } catch (error) {
         next(error);
     }
@@ -17,7 +20,7 @@ projectRouter.get('/', async (_req, res, next) => {
 projectRouter.post('/project', async (req, res, next) => {
     try {
         const project = req.body;
-        res.send(await projectsManager.POST_project(project));
+        res.send(await manager.POST_project(project));
     } catch (error) {
         next(error);
     }
@@ -25,4 +28,4 @@ projectRouter.post('/project', async (req, res, next) => {
 
 
 
-export default projectRouter;
+module.exports = projectRouter;

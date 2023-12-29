@@ -1,7 +1,7 @@
-import express from 'express'
-import mongoose from 'mongoose'
-import skillRouter from './src/routes/skills.routes';
-import projectRouter from './src/routes/projects.routes';
+const express = require('express');
+const mongoose = require('mongoose');
+const skillRouter = require('./src/routes/skills.routes.js');
+const projectRouter = require('./src/routes/projects.routes.js');
 
 
 const app = express();

@@ -1,8 +1,9 @@
-import projectModel from "../models/projects.model";
-import skillsModel from "../models/skills.model";
+const projectModel = require('../models/projects.model');
+const skillsModel = require('../models/skills.model');
+
 
 class ProjectsManager {
-    constructor() {};
+    constructor() {}
 
     async GET_allProjects() {
         try {
@@ -42,3 +43,5 @@ class ProjectsManager {
 
 
 }
+
+module.exports =  ProjectsManager;

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const projectsCollection = 'proyects';
 
@@ -17,6 +17,6 @@ proyectsSchema.pre('findOne', function() {
     this.populate('proyects.utilities');
 });
 
-const projectModel = mongoose.model(proyectsCollection, proyectsSchema);
+const projectModel = mongoose.model(projectsCollection, proyectsSchema);
 
-export default projectModel;
+module.exports = projectModel;
