@@ -5,7 +5,7 @@ const projectRouter = require('./src/routes/projects.routes.js');
 
 
 const app = express();
-const PORT = 3000;
+const PORT = "https://portfolio-back-queymimte-lucasperezz.vercel.app/" | 3000;
 
 
 app.use(express.json());
