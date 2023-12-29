@@ -1,5 +1,7 @@
 const express = require('express');
-const ProjectsManager = require('../managers/projectsManager.js');
+// Importa con la capitalización correcta
+const ProjectsManager = require('../managers/projectsManager');
+
 
 
 
