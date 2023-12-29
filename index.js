@@ -6,7 +6,7 @@ const projectRouter = require('./src/routes/projects.routes.js');
 
 
 const app = express();
-const PORT = "http://portfolio-backendd-k3ou.onrender.com/" || 3000;
+const PORT = "http://portfolio-backendd-k3ou.onrender.com/" | 3000;
 
 
 app.use(express.json());
