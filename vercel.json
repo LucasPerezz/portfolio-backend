@@ -1,0 +1,13 @@
+[
+    {
+        "functions": {
+          "api/**/*.js": {
+            "runtime": "vercel-node@0.12",
+            "entry": "index.js"
+          }
+        }
+      }
+]
+
+
+  
