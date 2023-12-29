@@ -1,6 +1,6 @@
 const express = require('express');
 // Importa con la capitalización correcta
-const ProjectsManager = require('../managers/projectsManager');
+const ProjectsManager = require('../dao/ProjectsManager');
 
 
 
