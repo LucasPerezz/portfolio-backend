@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const skillRouter = require('./src/routes/skills.routes.js');
 const projectRouter = require('./src/routes/projects.routes.js');
 
@@ -9,6 +10,7 @@ const PORT = "https://portfolio-backendd-k3ou.onrender.com/" | 3000;
 
 
 app.use(express.json());
+app.use(cors);
 app.use('/api/skills', skillRouter);
 app.use('/api/projects', projectRouter);
 
