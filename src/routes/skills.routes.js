@@ -1,5 +1,5 @@
 const express = require('express');
-const ProjectsManager = require('../managers/projectsManager');
+const ProjectsManager = require('../managers/projectsManager.js');
 
 
 
