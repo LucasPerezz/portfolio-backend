@@ -7,12 +7,13 @@ class ProjectsManager {
 
     async GET_allProjects() {
         try {
-            const result = await projectModel.find();
+            const result = await projectModel.find().populate('utilities').lean();
             return result;
         } catch (error) {
             console.log(error);
         }
     }
+    
 
     async GET_allSkills() {
         try {
