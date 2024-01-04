@@ -10,7 +10,7 @@ const PORT = "http://portfolio-backendd-k3ou.onrender.com/" | 3000;
 
 
 app.use(express.json());
-app.use(cors);
+app.use(cors());
 app.use('/api/skills', skillRouter);
 app.use('/api/projects', projectRouter);
 
