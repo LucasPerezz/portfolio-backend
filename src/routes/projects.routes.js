@@ -1,33 +1,17 @@
 const express = require('express');
-// Importa con la capitalización correcta
-const ProjectsManager = require('../dao/ProjectsManager');
-
-
-
+const {GET_allProjects, POST_project, GET_projectById, PUT_project, DELETE_project} = require('../controllers/projects.controller')
 
 
 const projectRouter = express.Router();
-const manager = new ProjectsManager();
 
-projectRouter.get('/', async (_req, res, next) => {
-    try {
-        res.send(await manager.GET_allProjects());
-    } catch (error) {
-        next(error);
-    }
-    
-})
+projectRouter.get('/', GET_allProjects);
 
+projectRouter.post('/', POST_project);
 
-projectRouter.post('/project', async (req, res, next) => {
-    try {
-        const project = req.body;
-        res.send(await manager.POST_project(project));
-    } catch (error) {
-        next(error);
-    }
-})
+projectRouter.get('/:id', GET_projectById);
 
+projectRouter.put('/:id', PUT_project);
 
+projectRouter.delete('/:id', DELETE_project);
 
 module.exports = projectRouter;

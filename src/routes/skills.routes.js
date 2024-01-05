@@ -1,32 +1,16 @@
 const express = require('express');
-// Importa con la capitalización correcta
-const ProjectsManager = require('../dao/ProjectsManager');
-
-
-
+const {GET_allSkills, POST_skill, DELETE_skill, GET_skillById, PUT_skill} = require('../controllers/skills.controller');
 
 const skillRouter = express.Router();
-const manager = new ProjectsManager();
 
-skillRouter.get('/', async (_req, res, next) => {
-    try {
-        res.send(await manager.GET_allSkills());
-    } catch (error) {
-        next(error);
-    }
-})
+skillRouter.get('/', GET_allSkills);
 
+skillRouter.post('/', POST_skill);
 
+skillRouter.get('/:id', GET_skillById);
 
-skillRouter.post('/skill', async (req, res, next) => {
-    try {
-        const auxSkill = req.body;
-        res.send(await manager.POST_skill(auxSkill));
-    } catch (error) {
-        console.log(error);
-        next(error);
-    }
-})
+skillRouter.delete('/:id', DELETE_skill);
 
+skillRouter.put('/:id', PUT_skill);
 
 module.exports = skillRouter;
