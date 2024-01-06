@@ -44,7 +44,7 @@ const PUT_project = async (req, res) => {
     try {
         const id = req.params.id;
         const project = req.body;
-        await projectModel.updateOne(id, project);
+        await projectModel.updateOne({_id: id}, project);
         res.json({msg: "Proyecto actualizado"});
     } catch (error) {
         console.log(error);
