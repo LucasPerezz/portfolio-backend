@@ -43,7 +43,7 @@ const PUT_skill = async (req, res) => {
     try {
         const id = req.params.id;
         const skill = req.body;
-        await skillsModel.updateOne(id, skill);
+        await skillsModel.updateOne({_id: id}, skill);
         res.json({msg: "Skill actualizada"});
     } catch (error) {
         console.log(error);
