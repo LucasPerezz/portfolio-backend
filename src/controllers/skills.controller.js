@@ -1,6 +1,6 @@
 const skillsModel = require('../models/skills.model');
 
-const GET_allSkills = async (_req, res) => {
+const getSkills = async (_req, res) => {
     try {
         const result = await skillsModel.find();
         res.json(result);
@@ -9,7 +9,7 @@ const GET_allSkills = async (_req, res) => {
     }
 }
 
-const POST_skill = async (req, res) => {
+const insertSkill = async (req, res) => {
     try {
         const skill = req.body;
         await skillsModel.create(skill);
@@ -19,7 +19,7 @@ const POST_skill = async (req, res) => {
     }
 }
 
-const DELETE_skill = async (req, res) => {
+const deleteSkill = async (req, res) => {
     try {
         const id = req.params.id;
         await skillsModel.findByIdAndDelete(id);
@@ -29,7 +29,7 @@ const DELETE_skill = async (req, res) => {
     }
 }
 
-const GET_skillById = async (req, res) => {
+const getSkillById = async (req, res) => {
     try {
         const id = req.params.id;
         const result = skillsModel.findById(id);
@@ -39,7 +39,7 @@ const GET_skillById = async (req, res) => {
     }
 }
 
-const PUT_skill = async (req, res) => {
+const updateSkill = async (req, res) => {
     try {
         const id = req.params.id;
         const skill = req.body;
@@ -51,9 +51,9 @@ const PUT_skill = async (req, res) => {
 }
 
 module.exports = {
-    GET_allSkills,
-    POST_skill,
-    DELETE_skill,
-    GET_skillById,
-    PUT_skill
+    getSkills,
+    insertSkill,
+    deleteSkill,
+    getSkillById,
+    updateSkill
 }

@@ -1,16 +1,16 @@
 const express = require('express');
-const {GET_allSkills, POST_skill, DELETE_skill, GET_skillById, PUT_skill} = require('../controllers/skills.controller');
+const {getSkills, insertSkill, deleteSkill, getSkillById, updateSkill} = require('../controllers/skills.controller');
 
 const skillRouter = express.Router();
 
-skillRouter.get('/', GET_allSkills);
+skillRouter.get('/', getSkills);
 
-skillRouter.post('/', POST_skill);
+skillRouter.post('/', insertSkill);
 
-skillRouter.get('/:id', GET_skillById);
+skillRouter.get('/:id', getSkillById);
 
-skillRouter.delete('/:id', DELETE_skill);
+skillRouter.delete('/:id', deleteSkill);
 
-skillRouter.put('/:id', PUT_skill);
+skillRouter.put('/:id', updateSkill);
 
 module.exports = skillRouter;

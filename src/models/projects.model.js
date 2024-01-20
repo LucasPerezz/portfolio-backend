@@ -8,14 +8,12 @@ const proyectsSchema = new mongoose.Schema({
     url: String,
     utilities: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'skills'
+        ref: 'skills',
     }],
     image: String
 })
 
-proyectsSchema.pre('findOne', function() {
-    this.populate('proyects.utilities');
-});
+
 
 const projectModel = mongoose.model(projectsCollection, proyectsSchema);
 

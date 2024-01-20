@@ -1,7 +1,8 @@
 const projectModel = require('../models/projects.model');
+const skillsModel = require('../models/skills.model');
 
 
-const GET_allProjects = async (req, res) => {
+const getProjects = async (req, res) => {
     try {
         const result = await projectModel.find().populate('utilities').lean();
         res.json(result);
@@ -10,7 +11,7 @@ const GET_allProjects = async (req, res) => {
     }
 }
 
-const POST_project = async (req, res) => {
+const insertProject = async (req, res) => {
     try {
         const project = req.body;
         await projectModel.create(project);
@@ -20,7 +21,7 @@ const POST_project = async (req, res) => {
     };
 }
 
-const GET_projectById = async (req, res) => {
+const getProjectById = async (req, res) => {
     try {
         const id = req.params.id;
         const result = await projectModel.find({_id: id}).populate('utilities').lean();
@@ -30,7 +31,7 @@ const GET_projectById = async (req, res) => {
     }
 }
 
-const DELETE_project = async (req, res) => {
+const deleteProject = async (req, res) => {
     try {
         const id = req.params.id;
         await projectModel.findByIdAndDelete(id);
@@ -40,7 +41,7 @@ const DELETE_project = async (req, res) => {
     }
 }
 
-const PUT_project = async (req, res) => {
+const updateProject = async (req, res) => {
     try {
         const id = req.params.id;
         const project = req.body;
@@ -51,11 +52,39 @@ const PUT_project = async (req, res) => {
     }
 }
 
+const insertSkillInProject = async (req, res) => {
+    try {
+        const projectId = req.params.projectId;
+        const skillId = req.params.skillId;
+        const project = await projectModel.findById(projectId);
+        project.utilities.push(skillId);
+        await projectModel.updateOne({_id: projectId}, project);
+        res.json({msg: "Skill agregada", project: project});
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const deleteSkillInProject = async (req, res) => {
+    try {
+        const projectId = req.params.projectId;
+        const skillId = req.params.skillId;
+        const project = await projectModel.findById(projectId);
+        project.utilities = project.utilities.filter(skill => skill != skillId);
+        await projectModel.updateOne({_id: projectId}, project);
+        res.json({msg: "Skill eliminada", project: project});
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 module.exports =  {
-    GET_allProjects,
-    POST_project,
-    GET_projectById,
-    PUT_project,
-    DELETE_project
+    getProjects,
+    insertProject,
+    getProjectById,
+    updateProject,
+    deleteProject,
+    insertSkillInProject,
+    deleteSkillInProject
 }
